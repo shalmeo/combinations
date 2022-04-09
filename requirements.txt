@@ -1,0 +1,4 @@
+allpairspy==2.5.0
+fastapi==0.75.1
+uvicorn==0.17.6
+xlsxwriter==3.0.3
