@@ -1,4 +1,5 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Body, Form
+from app.models.parameters import Parameters
 
 from app.utils.all_comb import gen_all_combinations
 from app.utils.pairwise_gen import pairwise_gen
@@ -9,7 +10,7 @@ router = APIRouter(tags=["combinations"])
 
 
 @router.post('/combinations/pair')
-async def pairwise(parameters: dict[str, list[str]], conditions: Conditions):
+async def pairwise(parameters: Parameters, conditions: Conditions):
     can_conditions = conditions.can
     cannot_conditions = conditions.cannot
     
@@ -18,7 +19,7 @@ async def pairwise(parameters: dict[str, list[str]], conditions: Conditions):
 
 
 @router.post('/combinations/all')
-async def all_combinations(parameters: dict[str, list[str]], conditions: Conditions):
+async def all_combinations(parameters: Parameters, conditions: Conditions):
     can_conditions = conditions.can
     cannot_conditions = conditions.cannot
     
