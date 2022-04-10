@@ -14,7 +14,9 @@ async def pairwise(parameters: Parameters, conditions: Conditions):
     can_conditions = conditions.can
     cannot_conditions = conditions.cannot
     
-    response = pairwise_gen(parameters, can_conditions, cannot_conditions)
+    
+    
+    response = pairwise_gen(parameters.dict(), can_conditions, cannot_conditions)
     return response
 
 
@@ -23,6 +25,6 @@ async def all_combinations(parameters: Parameters, conditions: Conditions):
     can_conditions = conditions.can
     cannot_conditions = conditions.cannot
     
-    response = gen_all_combinations(parameters, can_conditions, cannot_conditions)
+    response = gen_all_combinations(parameters.dict(), can_conditions, cannot_conditions)
     return response
     
