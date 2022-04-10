@@ -8,7 +8,7 @@ from app.models.cond import Conditions
 router = APIRouter(tags=["combinations"])
 
 
-@router.post('/api/combinations/pair')
+@router.post('/combinations/pair')
 async def pairwise(parameters: dict[str, list[str]], conditions: Conditions):
     can_conditions = conditions.can
     cannot_conditions = conditions.cannot
@@ -17,7 +17,7 @@ async def pairwise(parameters: dict[str, list[str]], conditions: Conditions):
     return response
 
 
-@router.post('/api/combinations/all')
+@router.post('/combinations/all')
 async def all_combinations(parameters: dict[str, list[str]], conditions: Conditions):
     can_conditions = conditions.can
     cannot_conditions = conditions.cannot
