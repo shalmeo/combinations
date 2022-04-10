@@ -11,14 +11,14 @@ def is_valid_combination(row, can_conditions, cannot_conditions):
     if can_conditions:
         for condition in can_conditions:
             if condition:
-                first_item, last_item = condition.values()
+                first_item, last_item = condition.dict().values()
                 if first_item in row and last_item not in row:
                     return False
     
     if cannot_conditions:
         for condition in cannot_conditions:
             if condition:
-                if set(condition.values()).issubset(set(row)):
+                if set(condition.dict().values()).issubset(set(row)):
                     return False
     return True
 

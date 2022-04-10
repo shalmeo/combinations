@@ -21,14 +21,14 @@ def gen_all_combinations(parameters: dict, can_conditions: list, cannot_conditio
             if can_conditions:
                 for condition in can_conditions:
                     if condition:
-                        first_item, last_item = condition.values()
+                        first_item, last_item = condition.dict().values()
                         if first_item in combination and last_item not in combination:
                             invalid_combinations.append(combination)
             
             if cannot_conditions:
                 for condition in cannot_conditions:
                     if condition:
-                        first_item, last_item = condition.values()
+                        first_item, last_item = condition.dict().values()
                         if first_item in combination and last_item in combination:
                             invalid_combinations.append(combination)
         
