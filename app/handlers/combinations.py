@@ -14,8 +14,6 @@ async def pairwise(parameters: Parameters, conditions: Conditions):
     can_conditions = conditions.can
     cannot_conditions = conditions.cannot
     
-    
-    
     response = pairwise_gen(parameters.dict(), can_conditions, cannot_conditions)
     return response
 
