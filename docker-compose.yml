@@ -7,3 +7,32 @@ services:
     restart: "unless-stopped"
     ports:
       - "8000:80"
+    depends_on:
+      - db
+      - db_migration
+    networks:
+      - botnet
+  db:
+    image: postgres:13-alpine
+    restart: "unless-stopped"
+    environment:
+      POSTGRES_USER: $DB_LOGIN
+      POSTGRES_PASSWORD: $DB_PASS
+      POSTGRES_DB: $DB_NAME
+    volumes:
+      - ./pgdata:/var/lib/postgresql
+    networks:
+      - botnet
+  db_migration:
+    build:
+      context: .
+    restart: "on-failure"
+    depends_on:
+      - db
+    command: sh -c "python -m alembic upgrade head"
+    networks:
+      - botnet
+
+networks:
+  botnet:
+    driver: bridge
