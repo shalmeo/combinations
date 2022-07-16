@@ -17,16 +17,16 @@ class Config:
     db: Database
 
 
-def load_config(path: str = '.env'):
+def load_config(path: str = ".env"):
     env = Env()
     env.read_env(path)
 
     return Config(
         db=Database(
-            login=env.str('DB_LOGIN'),
-            password=env.str('DB_PASS'),
-            host=env.str('DB_HOST'),
-            port=env.int('DB_PORT'),
-            name=env.str('DB_NAME'),
+            login=env.str("DB_LOGIN"),
+            password=env.str("DB_PASS"),
+            host=env.str("DB_HOST"),
+            port=env.int("DB_PORT"),
+            name=env.str("DB_NAME"),
         )
     )
