@@ -5,6 +5,8 @@ services:
       context: .
     stop_signal: SIGINT
     restart: "unless-stopped"
+    volumes:
+      - .:/usr/src/app
     ports:
       - "8443:80"
     depends_on:
